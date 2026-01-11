@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState, useEffect, useRef } from 'react'; // <--- Added useRef here
+import { useState, useEffect, useRef } from 'react'; // <--- Added useRef here
 import { 
   Terminal, Activity, Plus, Server, 
   User, Settings, MessageSquare, 
   Lock, ShieldCheck, ChevronRight, LogOut, X, Loader2, AlertOctagon,
-  Layout, AlertTriangle, Send, FileText, Zap, ShieldAlert, Briefcase,
+  Layout, Send, ShieldAlert, Briefcase,
   UserCog, KeyRound, Users, DollarSign
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from './lib/supabase';
-import { argon2id } from 'hash-wasm';
-
+import { argon2Verify } from 'hash-wasm';
+import logo from '../src/assets/logo.png';
 // --- Types ---
 type ClientProject = {
   id: string;
@@ -60,7 +60,7 @@ const DevAuthScreen = ({ onLogin }: { onLogin: () => void }) => {
     try {
       if (isSignUp) {
         // 1. Verify Hash Key
-        const isValid = await argon2id.verify({
+        const isValid = await argon2Verify({
           password: accessKey,
           hash: STORED_HASH,
         });
@@ -121,11 +121,16 @@ const DevAuthScreen = ({ onLogin }: { onLogin: () => void }) => {
       <div className="w-full max-w-md relative z-10 animate-in fade-in zoom-in-95 duration-500">
         <div className="mb-8 text-center">
           <div className="inline-flex items-center gap-2 text-[#FF6B00] mb-4">
-             <div className="h-8 w-8 rounded bg-[#FF6B00] flex items-center justify-center text-white font-bold">
-                <Terminal size={18} />
+             <div className="h-30 w-30 rounded bg-[#ff6a0000] flex items-center justify-center text-white font-bold">
+               <img 
+            src={logo} 
+            alt="Origins Logo" 
+            className={`h-20 w-auto object-contain transition-all`} 
+          />
+          
              </div>
           </div>
-          <h1 className="text-3xl font-black text-white mb-2 tracking-tight">Origins Command</h1>
+          <h1 className="text-3xl font-black text-white mb-2 tracking-tight">Origins Dev Portal</h1>
           <p className="text-slate-500">Restricted Access. Level 4 Clearance.</p>
         </div>
 
