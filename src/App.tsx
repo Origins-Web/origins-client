@@ -1,12 +1,12 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import OriginsLanding from '../src/LandingPage';
 import ClientDashboard from '../src/ClientDashBoard';
 import DevClientPortal from './DevClientPortal';
 
 export default function App() {
   return (
-    <BrowserRouter>
+
+    <HashRouter>
       <Routes>
         {/* Public Marketing Face */}
         <Route path="/" element={<OriginsLanding />} />
@@ -20,6 +20,7 @@ export default function App() {
         
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
+
   );
 }
