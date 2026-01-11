@@ -3,11 +3,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from './lib/supabase';
 import { 
-  Terminal, Activity, GitBranch, Server, CheckCircle2, 
+  Terminal, Activity, GitBranch, Server, 
   LogOut, Settings, RefreshCw, Box, Lock, Zap, 
-  MessageSquare, Plus, FileText, Download, Send, X, AlertTriangle, Loader2
+  MessageSquare, Plus, FileText, Send, X, AlertTriangle, Loader2
 } from 'lucide-react';
 
+import logo from '../src/assets/logo.png';
 // --- Types ---
 type ProjectData = {
   id: string;
@@ -141,7 +142,12 @@ const AuthScreen = () => {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#FF6B00] rounded-full blur-[150px] opacity-10 animate-pulse"></div>
       <div className="w-full max-w-md relative z-10 animate-in fade-in zoom-in-95 duration-500">
         <div className="mb-8 text-center">
-          <div className="inline-flex items-center gap-2 text-[#FF6B00] mb-4"><div className="h-8 w-8 rounded bg-[#FF6B00] flex items-center justify-center text-white font-bold text-lg">O</div></div>
+          <div className="inline-flex items-center gap-2 text-[#FF6B00] mb-4"><div className="h-30 w-30 rounded bg-[#ff6a0000] flex items-center justify-center text-white font-bold text-lg"><img 
+            src={logo} 
+            alt="Origins Logo" 
+            className={`h-20 w-auto object-contain transition-all`} 
+          />
+          </div></div>
           <h1 className="text-3xl font-black text-white mb-2 tracking-tight">Client Portal</h1>
           <p className="text-slate-500">Secure Client Access</p>
         </div>
